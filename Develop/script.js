@@ -34,6 +34,34 @@ var lowercaseList = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l",
 var uppercaseList = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"] 
 var randomList = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "~", "`", "!",  "@", "#", "$", "%", "^", "&", "*", "()", "_", "-", "+", "=", "{", "[", "}", "]", "|", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
 
+// for (var i = 0; i , lowercaseList.length; i++) { //This allows for you to copy the list of letters and paste them as uppercase vs typing them out again. You would leave one letter section above blank.
+  //   uppercaseList[i] = lowercaseList[i].toUpperCase()
+  // }
+
+  var optionsList = []
+
+  if (userWantsNumbers === true) { //If the user selects (true), the specific list will be available for the user to select from. You can confirm this with a test in the console log. console.log(optionsList). Shows the array list of the statements passed as (true). This is where the randomizer selects from based on criteria as (true).
+    optionsList.push(numberList)
+  }
+
+  if (userWantsSymbols === true) {
+    optionsList.push(symbolList)
+  }
+  
+  if (userWantsUppercase === true) {
+    optionsList.push(uppercaseList)
+  }
+
+  if (userWantsLowercase === true) {
+    optionsList.push(lowercaseList)
+  }
+
+  if (optionsList.length === 0) { //If the user selects (false) to all the criteria, then this will defaut to a specific list pre-defined. Created a random list with all characters.
+    optionsList.push(randomList) 
+
+  }
+// console.log(optionsList) //Goes with section above for testing.
+
 // Write password to the #password input
 function writePassword() {
   var password = generatePassword(); 
