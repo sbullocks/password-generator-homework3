@@ -38,6 +38,33 @@ function generatePassword() {
     return
   }
 
+
+// //This section from lines 42-62 is a secondary option. This will make the user keep selecting until the conditions are met for number and length. This will keep looping the statements. If not using this, use above which will exit (return); undefined.
+//   while (true) { //While Loop - this will ignore the (return) above and keep repeating the statement until the (true) criteria is met. Once the users input is valid, it will break the loop and look for next statement.
+
+//   var userInput = window.prompt("How long do you want your password to be?") 
+
+//   console.log(userInput)
+//   if (userInput === null) {  //null means the user selected cancel. It will exit the function. It will do nothing futher but user is not stuck in the loop.
+//       return
+// }
+
+//   var passwordLength = parseInt(userInput) 
+
+//   if (isNaN(passwordLength)) { 
+//     window.alert("That's not a number!")
+//   } else if (passwordLength < 8 || passwordLength > 128) {
+//     window.alert("Invalid password length. Required to be between 8 and 128 characters.")
+//   } else {
+//     break //If it is both a number and meets the length criteria, break loop and move to next statement.
+//   } 
+
+// }
+
+//This goes with lines 42-62. If you want to break the loop even with (false "cancel button"), you can with (null). 
+//Added to lines 47-50.
+
+
   var userWantsNumbers = window.confirm("Would you like to include numbers in your password?") //Prompt will have a "OK or Cancel option". This is a boolean. OK moves to next statement if any and Cancel stops.
   var userWantsSymbols = window.confirm("Would you like to include symbols in your password?")
   var userWantsUppercase = window.confirm("Would you like to include uppercase letters in your password?")
