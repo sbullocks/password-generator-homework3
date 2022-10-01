@@ -1,6 +1,22 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate"); //This is the red button on the page coming from the html.
 
+function randomInt(min, max) { //Returns a random interger between min-max. 
+
+  if (!max) { //If max is not defined, we want range from 0-min.
+    max = min 
+    min = 0
+  }
+
+  var rand = Math.random()
+  return Math.floor(min*(1 - rand) + rand*max) //Removes the decimal from the number. This will also give a random interger betwen the min-max.
+}
+
+function getRandomItem(list) {
+  return list[randomInt(list.length)] 
+}
+
+
 function generatePassword() {
 
   // var userInput = window.prompt("hello") //Write a string in the () to show in prompt message. ex: this page says ("click in textbox below")
@@ -27,14 +43,14 @@ function generatePassword() {
   var userWantsUppercase = window.confirm("Would you like to include uppercase letters in your password?")
   var userWantsLowercase = window.confirm("Would you like to include lowercase letters in your password?")
 
-//Creeated array to include all categories above.
-var numberList = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
-var symbolList = ["~", "`", "!",  "@", "#", "$", "%", "^", "&", "*", "()", "_", "-", "+", "=", "{", "[", "}", "]", "|"]
-var lowercaseList = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
-var uppercaseList = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"] 
-var randomList = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "~", "`", "!",  "@", "#", "$", "%", "^", "&", "*", "()", "_", "-", "+", "=", "{", "[", "}", "]", "|", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
+  //Creeated array to include all categories above.
+  var numberList = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
+  var symbolList = ["~", "`", "!",  "@", "#", "$", "%", "^", "&", "*", "()", "_", "-", "+", "=", "{", "[", "}", "]", "|"]
+  var lowercaseList = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
+  var uppercaseList = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"] 
+  var randomList = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "~", "`", "!",  "@", "#", "$", "%", "^", "&", "*", "()", "_", "-", "+", "=", "{", "[", "}", "]", "|", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
 
-// for (var i = 0; i , lowercaseList.length; i++) { //This allows for you to copy the list of letters and paste them as uppercase vs typing them out again. You would leave one letter section above blank.
+  // for (var i = 0; i , lowercaseList.length; i++) { //This allows for you to copy the list of letters and paste them as uppercase vs typing them out again. You would leave one letter section above blank.
   //   uppercaseList[i] = lowercaseList[i].toUpperCase()
   // }
 
@@ -62,14 +78,28 @@ var randomList = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "~", "`", "!
   }
 // console.log(optionsList) //Goes with section above for testing.
 
+var generatedPassword = "" //However long the password lenght is. It will be input into the empty string.
+
+for (var i = 0; i < passwordLength; i++) {
+  // Math.random() //This will always be a random number betwen 0-1. We want a random interger. Created a function at top in line 4.
+  var randomList = getRandomItem(optionsList) //This will allow random item to be selected from a list. Moved this to line 8 as a function to call any random list.
+  var randomChar = getRandomItem(randomList)
+  // console.log(randomChar) //Test to make sure that a random character is selected from the list. 
+  generatedPassword += randomChar
+}
+// console.log(generatedPassword) //Test to make sure generated password works. Used to test true and false options of user selections.
+return generatedPassword  //Prints the randomly generated password on the screen for the user to see. Shows undefined if password creteria not met.
+}
+
+
 // Write password to the #password input
 function writePassword() {
-  var password = generatePassword(); 
+  var password = generatePassword(); //This function was not written so I added it above. Displays the random characters displayed "password-text".
   var passwordText = document.querySelector("#password");
 
-  passwordText.value = password; 
+  passwordText.value = password; //The password generated will be the password. If password does not meet creteria, it will return undefined.
 
 }
 
 // Add event listener to generate button
-generateBtn.addEventListener("click", writePassword); 
+generateBtn.addEventListener("click", writePassword); //When you click on button it will run the function to write the password.
