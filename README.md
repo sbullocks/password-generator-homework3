@@ -53,7 +53,7 @@ This project is not licensed at this time.
 My coding class, [MDN](https://developer.mozilla.org/en-US/), [W3 Schools](https://www.w3schools.com/)..
 
 ## Link
-Click [here](http://127.0.0.1:5500/Develop/index.html) to access the live website.
+Click [here](http://127.0.0.1:5501/index.html) to access the live website.
 
 ## Screenshot
 ![Alt text](./Assets/03-javascript-homework-demo.png)
